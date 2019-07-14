@@ -3,27 +3,26 @@
 
 This project is part of the Ruby on Rails 'Authentication' section of 'The Odin Project'.
 
-The goal of this project is to build an exclusive clubhouse where members can write embarrassing posts about non-members. Inside the clubhouse, members can see who the author of a post is but, outside, they can only see the story and wonder who wrote it.
+The goal of this project is to build an exclusive clubhouse where members can write embarrassing posts about non-members. Inside the clubhouse, members can see who the author of a post is but, outside, they can only see the story and wonder who wrote it. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is not a complete solution, as new users still need to be created from the console. All the features that have been completed are listed on [The Odin Project's](https://www.theodinproject.com/courses/ruby-on-rails/lessons/authentication) website.
 
-Things you may want to cover:
+## Getting started
 
-* Ruby version
+To get started, clone the repo and then install the necessary gems with:
 
-* System dependencies
+`bundle install --without production`
 
-* Configuration
+Migrate the database next with:
 
-* Database creation
+`rails db:migrate`
 
-* Database initialization
+Then run the test suite to ensure everything works.
 
-* How to run the test suite
+`rails test`
 
-* Services (job queues, cache servers, search engines, etc.)
+Launch app with:
 
-* Deployment instructions
+`rails server`
 
-* ...
+Then visit 'localhost:3000' in you browser.
