@@ -37,4 +37,13 @@ module SessionsHelper
     cookies.delete(:remember_token)
     @current_user = nil
   end
+
+  def check_login_status
+    unless logged_in?
+      flash[:danger] = "You are not logged in. Please log in."
+      redirect_to root_url
+      return
+    end
+    
+  end
 end
