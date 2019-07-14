@@ -1,9 +1,10 @@
 <%= provide(:title, "Create post") %>
-
+<h1>Create Posts</h1>
 <% if @post.errors.full_messages.any? %>
-  <% @post.errors.full_messages.each do |msg_type, msg| %>
-    <div><%= msg %></div>
+  <% @post.errors.full_messages.each do |msg| %>
+    <div class="errors"><%= msg %></div>
   <% end %>
+  <br>
 <% end %>
 
 <%= form_for @post do |f| %>
