@@ -103,4 +103,8 @@ class UserTest < ActiveSupport::TestCase
   test "authenticate method returns true if password is correct" do
     assert @user.authenticate("foobar")
   end
+
+  test "authenticated? should return false for a user with nil digest" do
+    assert_not @user.authenticated?("")
+  end
 end

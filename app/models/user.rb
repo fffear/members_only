@@ -12,9 +12,9 @@ class User < ApplicationRecord
                        format:       { with: VALID_EMAIL_REGEX }
   has_secure_password
   validates :password, presence:     true,
-                       length:       { minimum: 6 }   
+                       length:       { minimum: 6 },
+                       allow_nil: true 
              
-
   def self.digest_password(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
@@ -36,6 +36,14 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
+  def authenticated?(string)
+    return false if remember_digest.nil?
+    User.digest(string) == remember_digest
+  end
+
+  def forget
+    self.remember_digest = nil
+  end
 
   private
     def downcase_email

@@ -7,8 +7,13 @@ module SessionsHelper
   # Remember user
   def remember(user)
     user.change_remember_token_and_digest
-    cookies.permanent.signed[:remember_token] = user.remember_token
+    cookies.permanent[:remember_token] = user.remember_token
     cookies.permanent.signed[:user_id] = user.id
+  end
+
+  def forget(user)
+    cookies.delete(:remember_token)
+    cookies.delete(:user_id)
   end
 
   # Returns the current logged in use (if any)
@@ -17,10 +22,9 @@ module SessionsHelper
       @current_user ||= User.find_by(id: session[:user_id])
     elsif cookies.signed[:user_id]
       @current_user = User.find_by(id: cookies.signed[:user_id])
-      if User.digest(cookies.signed[:remember_token]) == @current_user.remember_digest
+      if @current_user && @current_user.authenticated?(cookies[:remember_token])
+        log_in @current_user
         @current_user
-      else
-        nil
       end
     end
   end
@@ -43,7 +47,6 @@ module SessionsHelper
       flash[:danger] = "You are not logged in. Please log in."
       redirect_to root_url
       return
-    end
-    
+    end    
   end
 end
