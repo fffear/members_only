@@ -5,7 +5,7 @@ This project is part of the Ruby on Rails 'Authentication' section of 'The Odin 
 
 The goal of this project is to build an exclusive clubhouse where members can write embarrassing posts about non-members. Inside the clubhouse, members can see who the author of a post is but, outside, they can only see the story and wonder who wrote it. 
 
-This is not a complete solution, as new users still need to be created from the console. All the features that have been completed are listed on [The Odin Project's](https://www.theodinproject.com/courses/ruby-on-rails/lessons/authentication) website.
+All the features that have been completed are listed on [The Odin Project's](https://www.theodinproject.com/courses/ruby-on-rails/lessons/authentication) website, with an added ability to signup from the app, as well as feature to remember the user.
 
 ## Getting started
 
